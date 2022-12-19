@@ -1,0 +1,21 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    font-size: 1rem;
+}
+
+header {border: none;}
+header > div h1 {padding: 0.8125rem 0 0.75rem 0.625rem;}
+header h1 img { width: 2.8125rem;}
+header > div nav { display: none;}
+header > div .spot {right: 4.5rem;}
+header > div .spot i { display:inline-block; font-size: 1.5rem;}
+header .total { display:inline-block; position: absolute; right: 0.75rem; top: 0.75rem; font-size: 2rem;}
+header > div .spot li a { padding: 0; top: 1.3rem;}
+header > div .spot li ~ li { padding-left: 1.6875rem;}
+header > div .spot li ~ li a:after {display: none;}
+header > div .spot li:nth-child(3) {display: none;}
+header .total span, 
+header > div .spot li span { position: absolute; left: -4000%;}

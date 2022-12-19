@@ -1,34 +1,63 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <script src="main.js" defer></script>
-    <title>Tour Connect</title>
-</head>
-<body>
-    <nav class="navbar">
-        <div class="navbar_logo">
-            <i class="fa-brands fa-google"></i>
-            <a href="">Tour Connect</a>
-        </div>
-        <ul class="navbar_menu">
-            <li><a href="">home</a></li>
-            <li><a href="">gallery</a></li>
-            <li><a href="">weddings</a></li>
-            <li><a href="">faq</a></li>
-            <li><a href="">bookings</a></li>
+  <head>
+    <div w3-include-html="head_common.html"></div>
+    <script>
+      function includeHTML() {
+        var z, i, elmnt, file, xhttp;
+        /* Loop through a collection of all HTML elements: */
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          elmnt = z[i];
+          /*search for elements with a certain atrribute:*/
+          file = elmnt.getAttribute("w3-include-html");
+          if (file) {
+            /* Make an HTTP request using the attribute value as the file name: */
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (this.readyState == 4) {
+                if (this.status == 200) {
+                  elmnt.innerHTML = this.responseText;
+                }
+                if (this.status == 404) {
+                  elmnt.innerHTML = "Page not found.";
+                }
+                /* Remove the attribute, and call this function once more: */
+                elmnt.removeAttribute("w3-include-html");
+                includeHTML();
+              }
+            };
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            /* Exit the function: */
+            return;
+          }
+        }
+      }
+    </script>
+    <script>
+      includeHTML();
+    </script>
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1><a href="index.html" aria-label="투어커넥트로고" title="투어커넥트로고"><img src="/images/logo/150x100.png" alt="tourconnect_logo"></a></h1>
+        <nav>
+          <ul>
+            <li><a href="#a" aria-label="항공권" title="항공권">항공권</a></li>
+            <li><a href="#a" aria-label="숙소" title="숙소">숙소</a></li>
+            <li><a href="#a" aria-label="투어티켓" title="투어 티켓">투어&amp;티켓</a></li>
+            <li><a href="#a" aria-label="해외 패키지" title="해외 패키지">해외 패키지</a></li>
+          </ul>
+        </nav>
+        <ul class="spot">
+          <li><a href="#a"><i class="fa-solid fa-user"></i><span>Sing In</span></a></li>
+          <li><a href="#a"><i class="fa-solid fa-id-card"></i><span>My TourConnect</span></a></li>
+          <li><a href="#a">검색</a></li>
         </ul>
-        <ui class="navbar_icons">
-            <li><i class="fa-brands fa-twitter"></i></li>
-            <li><i class="fa-brands fa-square-twitter"></i></li>
-        </ui>
-        <a href="#" class="navbar_togleBtn">
-            <i class="fa-solid fa-bars"></i>
-        </a>
-    </nav>
-</body>
+        <a href="#a" class="total fa-solid fa-bars"><span>전체메뉴보기</span></a>
+    </div>
+    </header>
+  </body>
 </html>
